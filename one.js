@@ -25,6 +25,15 @@ function addTask() {
  function deleteTask(event) {
   const taskItem = event.target.parentNode;
   taskList.removeChild(taskItem);
+
+}
+function editTask(event) {
+  const taskItem = event.target.parentNode;
+  const taskText = taskItem.textContent.split(' - ')[0];
+  const newTaskText = prompt('Enter new task text:', taskText);
+  if (newTaskText) {
+    taskItem.textContent = `${newTaskText} - ${formatDate(new Date())}`;
+  }
 }
 function formatDate(date) {
   const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
