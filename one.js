@@ -8,10 +8,15 @@ function addTask() {
   const taskText = taskInput.value.trim();
   if (taskText) {
     const taskItem = document.createElement('li');
-    taskItem.textContent = `${taskText} - ${formatDate(new Date())}`;
+    taskItem.innerHTML = <span>${taskText} - ${formatDate(new Date())}</span>;
     const deleteBtn = document.createElement('button');
     deleteBtn.textContent = 'Delete';
     deleteBtn.addEventListener('click', deleteTask);
+    const editBtn = document.createElement('button');
+    editBtn.classList.add('edit');
+    editBtn.textContent = 'Edit';
+    editBtn.addEventListener('click', editTask);
+    taskItem.appendChild(editBtn);
     taskItem.appendChild(deleteBtn);
     taskList.appendChild(taskItem);
     taskInput.value = '';
